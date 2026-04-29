@@ -17,6 +17,7 @@ from tools.column_mapper import map_columns
 from tools.data_cleaner import clean_transaction_data
 from tools.metadata_extractor import extract_metadata, extract_metadata_with_llm
 from tools.data_validator import validate_transaction_data, validate_json_format
+from tools.bank_learner import save_bank_mapping, get_learning_history
 
 LLM_CONFIG = "config/agent_llm_config.json"
 
@@ -69,7 +70,9 @@ def build_agent(ctx=None):
         extract_metadata,              # 提取元数据
         extract_metadata_with_llm,     # 使用LLM提取元数据
         validate_transaction_data,     # 数据验证
-        validate_json_format           # JSON格式验证
+        validate_json_format,          # JSON格式验证
+        save_bank_mapping,             # 保存新银行映射关系到规则文件
+        get_learning_history           # 获取学习历史
     ]
 
     return create_agent(
