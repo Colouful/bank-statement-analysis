@@ -326,7 +326,8 @@
     "支出金额"
   ],
   "余额": [
-    "账户余额"
+    "账户余额",
+    "账户余额 Account balance"
   ],
   "交易备注/摘要": [
     "交易摘要"
@@ -350,6 +351,21 @@
       },
       "confidence": 0.9,
       "total_columns": 7
+    },
+    {
+      "bank_name": "中信银行",
+      "timestamp": "2026-04-29T14:37:56.219745",
+      "new_mappings": {
+        "收入金额 Account": "金额",
+        "支出金额": "金额",
+        "账户余额 Account balance": "余额"
+      },
+      "confidence": 0.95,
+      "total_columns": 7
     }
+  ],
+  "金额": [
+    "收入金额 Account",
+    "支出金额"
   ]
 }
