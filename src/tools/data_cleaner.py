@@ -439,27 +439,27 @@ def clean_transaction_data(
         
     except json.JSONDecodeError as e:
         error_info = format_error_response(
-            DataCleaningError(f"JSON解析失败: {str(e)}", details=f"输入数据格式不正确")
+            DataCleaningError(f"JSON解析失败: {str(e)}", row_index=-1, row_data=[], details=f"输入数据格式不正确")
         )
         return json.dumps(error_info, ensure_ascii=False)
     except KeyError as e:
         error_info = format_error_response(
-            DataCleaningError(f"缺少必要的列: {str(e)}", details="列名映射中缺少必要的字段")
+            DataCleaningError(f"缺少必要的列: {str(e)}", row_index=-1, row_data=[], details="列名映射中缺少必要的字段")
         )
         return json.dumps(error_info, ensure_ascii=False)
     except IndexError as e:
         error_info = format_error_response(
-            DataCleaningError(f"数据行长度不匹配: {str(e)}", details="数据行列数与列名不匹配")
+            DataCleaningError(f"数据行长度不匹配: {str(e)}", row_index=-1, row_data=[], details="数据行列数与列名不匹配")
         )
         return json.dumps(error_info, ensure_ascii=False)
     except ValueError as e:
         error_info = format_error_response(
-            DataCleaningError(f"数据格式错误: {str(e)}", details="金额或时间字段格式不正确")
+            DataCleaningError(f"数据格式错误: {str(e)}", row_index=-1, row_data=[], details="金额或时间字段格式不正确")
         )
         return json.dumps(error_info, ensure_ascii=False)
     except Exception as e:
         error_info = format_error_response(
-            DataCleaningError(f"未知错误: {str(e)}", details=type(e).__name__)
+            DataCleaningError(f"未知错误: {str(e)}", row_index=-1, row_data=[], details=type(e).__name__)
         )
         return json.dumps(error_info, ensure_ascii=False)
 
